@@ -1,0 +1,126 @@
+THE CLIENT SERVER MODEL: 
+- Internet --> client and server
+- Client --> request resource/services
+- Servers --> provides resources/services
+- Browser(client) --> request resources --> web servers --> provide resources
+- web page --> collection of resources/files sent by web server --> html, css, js, images and videos --> browser combine these to display web page
+- Web APIs enables applications to interact with each other and share data and resources in controlled way.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+HOW DO THE CLIENT KNOW WHERE TO FIND THESE RESOURCES? 
+- Every device connected to the internet--> unique Internet protocol (IP) address --> other devices can use to find it. 
+- These IPs look complicated --> IPv4: 123.45.67.89 / IPv6: 2001:db8::ff00:42:8329
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+SOLUTION : DOMAIN NAME SYSTEM (DNS)
+- DNS server functions as phone book for internet --> translating domain names into IP addresses. 
+- Browser (enter domain name: where is www.google.com) --> DNS server (it is 216.58.194.123) --> Broweser (Thanks!!)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+NOW COMES INTERNET PORTS: 
+- After browser acquires the correct IP --> connect to the IP address via port
+- PORT --> logical division on devices that identifies a specific network service 
+- identify port by number--> range: 0-65535
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+WHY SO MANY PORTS ? 
+- Allow server to provide multiple services to the internet at the same time
+- Browser(client)--> port 80 --> web server --> Port 80-http service & port 25 - email service & port 21 - ftp service
+- By default port 80 - HTTP msgs & port 443 - HTTPS 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+CONNECTION ESTABLISHED - WHAT TO DO NOW ? 
+- Communicate via HTTP (hypertext transfer protocol)
+- HTTP is set of rules --> how to structure & interpret internet msgs, how web client & web servers should exchange information
+- when browser wants to interact with server --> sends the server an HTTP request
+- Types : GET & POST
+- GET : retrieves data from server
+- POST : submit data to server
+- OPTIONS : request permitted HTTP methods for a given URL
+- PUT : update a resource 
+- DELETE : delete a resource
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+STRUCTURE OF GET REQUEST
+
+- HTTP req --> req line, req header & optional req body
+- below has only req line and req header
+
+ GET / HTTP/1.1
+ Host: www.google.com
+ User-Agent: Mozilla/5.0
+ Accept: text/html,application/xhtml+xml,application/xml
+ Accept-Language: en-US
+ Accept-Encoding: gzip, deflate
+ Connection: close
+
+- req line --> first line --> specifies req method, requested URL , version of HTTP used
+- req header --> send additional info --> customize results sent to the client 
+
+- connection header -->tells server whether the network connection should stay open after the server responds
+
+OTHER COMMON HEADER: 
+- Cookie header --> send cookies from client to server
+- Referer --> specifies the address of previous web page that linked to the current page 
+- Authorization header --> contains credentials to authenticate a user to a server
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+HTTP RESPONSE: 
+- After request --> server return all resources used to construct web page by using HTTP responses
+- RESPONSE contains --> HTTP status code (req succeeded or not), HTTP headers(info browser & server use to communicate--> authentication, content format, security policy), HTTP response body/ actual web content requested
+
+HTTP/1.1 200 OK
+//response headers --> additional info about response to client
+ Date: Tue, 31 Aug 2021 17:38:14 GMT
+ [...]
+ Content-Type: text/html; charset=UTF-8
+ Server: gws	--> server version
+ Content-Length: 190532
+//response body
+ <!doctype html>
+ [...]
+ <title>Google</title>
+ [...]
+ <html>
+
+OTHER HEADERS: 
+- set cookie header --> server -> client --> set a cookie 
+- Location --> URL to which to redirect the pg 
+- Access control allow origin --> which origins can access the pg content
+- content security policy control --> origin of resources browser is allowed to load
+- X Frame Options --> whether pg can be loaded within an iframe
+
+Status code: 
+- 200 --> ok
+- 300 --> redirect to another page 
+- 400 --> error on client's part
+- 500 --> server ran into error
+- 403 --> resource forbidden to you
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
