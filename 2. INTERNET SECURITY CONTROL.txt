@@ -1,0 +1,89 @@
+INTERNET SECURITY CONTROL: 
+
+CONTENT ENCODING: 
+- HTTP req & response are transmitted by encoding the messages in different ways to prevent data corruption. 
+- Data encoding used to transfer binary data across machines that have limited support for diff content type. 
+- When encoding is done, the data will arrive uncorrupted. 
+- When original data is transferred, data might be corrupted when internet protocol misinterprets special characters in the msg. 
+TYPES OF ENCODING:  
+- Base64 encoding --> common ways of encoding
+- Base64url encoding --> modified version used for URL encoding
+- Hexadecimal encoding/ hex --> represent character in base 16 format --> more space & less efficient that base64
+- URL encoding --> converting characters into format that is more easily transmitted over internet
+
+- servers also encrypt content before transmission
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SESSION MANAGEMENT & HTTP COOKIES
+
+WHY IS THAT I DON'T HAVE TO RE-LOG IN EVERY TIME I CLOSE EMAIL TAB? 
+- because website remembers my session
+- session management --> process that allows server to handle multiple requests from same user without asking to log in again. 
+- website maintains session for each logged-in user
+- user logs in --> new session starts --> server assigns session ID for browser (proof of my identity)
+- user logs out --> server ends session --. revokes session ID  
+- website may end session periodically if you don't manually log out. 
+
+BROWSER ---> LOG IN (username - charu) --> SERVER --> session ID (@sdflhsdfsj8768343kl) --> BROWSER
+
+HOW IS THE SESSION INFORMATION COMMUNICATED IN REQUEST?
+- HTTP cookies
+- websites use cookies to communicate session info in HTTP request
+- HTTP cookies --> small piece of data --> server sends to browser
+- LOG IN --> server creates session --> sends session ID as COOKIE --> to browser, stores it --> sends it in every req to same server --> THAT'S HOW SERVER CAN TELL IT'S ME --> server tracks it & uses to validate my identity 
+- LOG OUT --> server invalidates session cookie
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOKEN-BASED AUTHETICATION
+- stores information directly in token
+- Token allows server to validate identity by decoding token itself
+- Application don't have to store-maintain session information server-side
+- Risk --> can't user modify information in the token and login as someone else ? 
+- Soln --> encrypt/encode token so application/ authorized party can read it --> if user cannot understand it --> can't tamper
+- Signing token --> verify token signature at server side 
+- signature --> generated using secret key --> server knows secret key --> valid signature --> signature not altered 
+- LOG IN (cred)--> SERVER VALIDATES (provided signed token) --> user sends this token with every request (prove identity) --> SERVER validate token
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+JSON WEB TOKENS: 
+- JWT commonly used type of authentication tokens
+- header, payload and signature
+- header --> algorithm used to generate the signature--> base64url
+- payload --> info user's identity --> base64url
+- signature --> concatenating header + payload --> signing with algorithm specified in header & secret key--> header, payload & signature
+
+MANIPULATING ALG FIELD
+- JWT support none for algo type --> if changed : empty signature --> valid 
+- NONE --> debugging purpose --> if not turned off in production env --> allow attackers
+ - Changing type of alg
+- Common JWT --> HMAC & RSA 
+- HMAC --> token signed with key & verified with same key
+- RSA --> token created with private key & verified using public key
+
+-What if system designed to use RSA --> attacker changed to --> HMAC --> public key (verification) can be used to sign too (HMAC)
+
+BRUTE-FORCING THE KEY 
+- if key used to sign token is not complex enough --> brute-force it easily 
+
+READING SENSITIVE INFORMATION
+- token not encrypted --> anyone can decode64-decode --> read token's payload
+
+THE SAME-ORIGIN POLICY
+- a script from page A can access data from page B only if the pages are of same origin
+- same origin --> same protocol, hostname. port number
+1. BROWSER (http://onlinebank.com) --> logged in (has cookie)--> server connected 
+2. BROWSER --> clicks http://attacker.com (same browser) --> GET request to onlinebank.com --> in onlinebank page : GET+ cookie sent to server --> server gives data --> attacker.com script reads and retrieves data
+PREVENTION: SOP
+3. attacker.com cannot read HTML data returned
+- Keeps malicious script on page A from obtaining sensitive information embedded in page B
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
