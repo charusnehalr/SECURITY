@@ -1,0 +1,70 @@
+1. Everything runs on Linux 
+2. Linux is scary 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Shell:
+- Common shell in Linux --> Bourne-Again Shell (BASH)
+
+Prompt description: 
+- <username>@<hostname><current working directory>$
+- home directory --> <~> --> default when we log in --> <username>@<hostname>[~]$
+- 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+When you start HTB Academy
+- Parrot OS (distribution of Linux used for hacking)
+- Build on Linux Kernel 
+- Linux is a kernel --> we build OS on top of kernel
+- what does Linux kernel do ? --> interfaces with hw --> CPU, RAM, HD
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Why Linux? 
+- OpenSource - open and free to use and redistribute 
+- Faster and more secure - which is why most websites and servers use Linux as OS - also hacking tools are Linux based
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Linux commands: 
+pwd: print working directory 
+cd: change directory
+ls: list 
+cd ..: go back to prev directory
+/ : this is the root of file system --> the end or start
+clear / ctrl+L : well it clears duhh
+cat : concatenate --> take a file and throw it in the terminal
+cp 'source' 'destination': copy 
+rm : removes stuffs
+which: find out where my command binaries live 
+	Eg: which ls --> /usr/bin/ls --> so using the ls file inside usr
+ctrl+c : stop the output
+man <tool>: details manual of the tool 
+<tool> -h: help
+apropos <keyword>: give a short description --> apropos sudo
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+BIG IDEA: Everything in Linux is a FILE
+- configuration - network settings - things like ip address, interface stuffs - file 
+- devices - hd, printers, cd-rom --> represented in file
+- Commands --> files 
+Eg: 
+- from / (root)
+- ls 
+- cd bin (bin --> binaries --> (inside) command binaries)
+- copy data of ls file to charu file 
+- now when I type in charu, guess what? it works as ls !!!!
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+inside / (root):
+- bin: contains commands as file
+- sbin: super bin: contains special commands only admin can use
+- boot: files needed to boot
+- var: log files/ location related fiels
+- tmp: temporary files
+- lib: shared library 
+- home: where we live - users are here 
+- root: where root lives 
+- dev: where the devices like hd etc live
+- etc/called etsy file: where settings/configuration/application live
+- media: mount drives --> plug in usb to Linux --> automatically mounted to media directory as file
+- mnt: mount drives which we do manually
+
+inside /usr: 
+- bin: cmds 
+- sbin: special cmds
+- we have them again
+
+/bin & /sbin == /usr/bin & /usr/sbin (this will have more commands)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
