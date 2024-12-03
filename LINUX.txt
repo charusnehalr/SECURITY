@@ -1,9 +1,16 @@
 1. Everything runs on Linux 
 2. Linux is scary 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Terminal/ terminal emulator (used to interact with the shell) think of it as keyboard/monitor -->Shell (user interface we use to interact with the OS) this as the ui
+
 Shell:
 - Common shell in Linux --> Bourne-Again Shell (BASH)
+- find out which shell we using ? --> type in ps (process status)
+- then what is powershell? --> that's windows
+- so what we use is terminal emulator and we are using bash shell
 
+- $: logged in as a user
+- #: logged in as root
 Prompt description: 
 - <username>@<hostname><current working directory>$
 - home directory --> <~> --> default when we log in --> <username>@<hostname>[~]$
@@ -60,6 +67,19 @@ inside / (root):
 - etc/called etsy file: where settings/configuration/application live
 - media: mount drives --> plug in usb to Linux --> automatically mounted to media directory as file
 - mnt: mount drives which we do manually
+- id: tells all about you
+- hostname: tells the hostname
+- uname: lot of info 
+- ifconfig: network stuff
+- ip: more network stuff
+- netstat: status of network
+- ss: session stuffs --> session status
+- ps: process stuffs --> process status
+- env: env variables
+- man <command>: help with the command
+- <command> --help: gets the helppp
+- apropos <keyword> :if you don't remember the command but kn what to do, tell him what to do but giving with keyword
+
 
 inside /usr: 
 - bin: cmds 
@@ -68,3 +88,53 @@ inside /usr:
 
 /bin & /sbin == /usr/bin & /usr/sbin (this will have more commands)
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Working with Files and Directories:
+
+- touch <filename>: Create an empty file
+- mkdir <foldername>: Create a empty folder
+- mkdir -p Storage/local/user/documents: <filename - Storage>: -p to add parent directories
+- tree . : look at the whole structure 
+- touch ./Storage/local/user/userinfo.txt: create files directly in the directories by specifying the path where the file should be stored
+- mv: rename--> mv <file/directory> <renamed file/directory> 
+- mv: move --> information.txt readme.txt Storage/
+- cp: copy --> Storage/readme.txt Storage/local/
+
+- nano <filename.txt>: create new txt file --> opens pager
+- cat <filename>: view content of file
+
+- which : returns the path to the file/link that should be executed
+- find <location> <options>: find with certain filter --> find / -type f -name *.config -newermt 2020-03-03 -size +25k -exec ls -al {} \; 2>/dev/null --> 2>/dev/null --> errors go to null - can't see them
+
+- locate : works with local db (cache) --> lesser filter
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
